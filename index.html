@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneHealth | Unified Medical Ecosystem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --bg-light: #f8fafc;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 60px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .btn-portal {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-portal:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        .hero {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding: 0 60px;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin-bottom: 35px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            height: 100%;
+            background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            border-bottom-left-radius: 100px;
+        }
+
+        .stats-container {
+            padding: 100px 60px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: -50px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            flex: 1;
+            max-width: 350px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+        }
+
+        .stat-card.featured { border: 2px solid var(--accent); }
+        .stat-card i { font-size: 2rem; color: var(--accent); margin-bottom: 20px; }
+        .stat-card h3 { font-size: 2.5rem; font-weight: 800; margin-bottom: 5px; }
+        .stat-card p { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+
+        .section-padding { padding: 100px 60px; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .story-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #f1f5f9;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .story-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+        .contact-section {
+            background: var(--primary);
+            color: white;
+            border-radius: 50px 50px 0 0;
+            padding: 100px 60px;
+        }
+
+        .contact-grid {
+            display: flex;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .contact-info { flex: 1; }
+        .contact-form { 
+            flex: 1; 
+            background: rgba(255,255,255,0.05); 
+            padding: 40px; 
+            border-radius: 24px; 
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            color: white;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        footer {
+            background: var(--primary);
+            padding: 40px 60px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1000px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+            .hero-visual { display: none; }
+            .contact-grid { flex-direction: column; gap: 50px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">One<span>Health</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#stories">Stories</a>
+            <a href="#contact">Contact</a>
+            <a href="login.html" class="btn-portal">Login Portal</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <div style="color: var(--accent); font-weight: 800; letter-spacing: 2px; margin-bottom: 10px;">SECURE • UNIFIED</div>
+            <h1>Healthcare, <br>Reimagined.</h1>
+            <p>A unified cloud ecosystem connecting patients, doctors, hospitals and labs. Your medical history, secured and accessible anytime, anywhere.</p>
+            <a href="login.html" class="btn-portal" style="padding: 18px 40px; font-size: 1.1rem; display: inline-block;">Get Started Now</a>
+        </div>
+        <div class="hero-visual"></div>
+    </section>
+
+    <div class="stats-container">
+        <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <h3>2.4M+</h3>
+            <p>Registered Patients</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-microscope"></i>
+            <h3>850+</h3>
+            <p>Certified Labs & Directors</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-file-medical"></i>
+            <h3>15M+</h3>
+            <p>Medical Records Synced</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-hospital"></i>
+            <h3>1,200+</h3>
+            <p>Partner Hospitals</p>
+        </div>
+    </div>
+
+
+    <section class="section-padding" id="stories">
+        <div class="section-header">
+            <h2>Global Success Stories</h2>
+            <p>How OneHealth is transforming the medical landscape one life at a time.</p>
+        </div>
+        <div class="grid">
+            <div class="story-card">
+                <i class="fas fa-quote-left" style="color: var(--accent); font-size: 1.5rem;"></i>
+                <p style="margin: 20px 0;">"A patient arrived unconscious. Thanks to OneHealth, we accessed his allergy history instantly and saved him from a fatal drug reaction."</p>
+                <h5 style="font-weight: 700;">— Dr. Sarah Smith, City Hospital</h5>
+            </div>
+            <div class="story-card">
+                <i class="fas fa-quote-left" style="color: var(--accent); font-size: 1.5rem;"></i>
+                <p style="margin: 20px 0;">"The AI diagnostic assistant correctly flagged a rare cardiac pattern that we might have missed. It's a game changer for our clinic."</p>
+                <h5 style="font-weight: 700;">— Dr. James Wilson, Cardiologist</h5>
+            </div>
+            <div class="story-card">
+                <i class="fas fa-quote-left" style="color: var(--accent); font-size: 1.5rem;"></i>
+                <p style="margin: 20px 0;">"I no longer carry huge files. My reports are uploaded by the lab and my doctor sees them instantly through the portal."</p>
+                <h5 style="font-weight: 700;">— Rajesh Kumar, Patient</h5>
+            </div>
+            <div class="story-card">
+                <i class="fas fa-quote-left" style="color: var(--accent); font-size: 1.5rem;"></i>
+                <p style="margin: 20px 0;">"Managing 500+ lab results daily was a nightmare until OneHealth. Now everything is automated and synced with the hospitals."</p>
+                <h5 style="font-weight: 700;">— Elena Rodriguez, Lab Director</h5>
+            </div>
+            <div class="story-card">
+                <i class="fas fa-quote-left" style="color: var(--accent); font-size: 1.5rem;"></i>
+                <p style="margin: 20px 0;">"The bed management system reduced our wait times by 40%. We can now redirect emergency cases to available wings in seconds."</p>
+                <h5 style="font-weight: 700;">— Mark Thompson, Hospital Admin</h5>
+            </div>
+            <div class="story-card">
+                <i class="fas fa-quote-left" style="color: var(--accent); font-size: 1.5rem;"></i>
+                <p style="margin: 20px 0;">"As a frequent traveler, having my entire medical history on a secure cloud gives me immense peace of mind wherever I am."</p>
+                <h5 style="font-weight: 700;">— Anita Desai, Patient</h5>
+            </div>
+        </div>
+    </section>
+    <section class="section-padding" style="background: white; border-top: 1px solid #f1f5f9;">
+    <div class="section-header">
+        <div style="color: var(--accent); font-weight: 800; letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; font-size: 0.8rem;">Core Infrastructure</div>
+        <h2>Enterprise-Grade Security</h2>
+        <p>Built on a foundation of privacy and advanced interoperability.</p>
+    </div>
+
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="story-card" style="text-align: center; padding: 30px;">
+            <div style="font-size: 2rem; color: var(--accent); margin-bottom: 15px;">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h4 style="font-weight: 700; margin-bottom: 10px; color: var(--primary);">End-to-End Encrypted</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Military-grade AES-256 encryption for all patient data and communications.</p>
+        </div>
+
+        <div class="story-card" style="text-align: center; padding: 30px;">
+            <div style="font-size: 2rem; color: var(--accent); margin-bottom: 15px;">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h4 style="font-weight: 700; margin-bottom: 10px; color: var(--primary);">AI Health Analysis</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Predictive modeling and automated insights to assist clinical decision making.</p>
+        </div>
+
+        <div class="story-card" style="text-align: center; padding: 30px;">
+            <div style="font-size: 2rem; color: var(--accent); margin-bottom: 15px;">
+                <i class="fas fa-database"></i>
+            </div>
+            <h4 style="font-weight: 700; margin-bottom: 10px; color: var(--primary);">Centralized Mongo DB</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">High-availability NoSQL architecture for instant record retrieval.</p>
+        </div>
+
+        <div class="story-card" style="text-align: center; padding: 30px;">
+            <div style="font-size: 2rem; color: var(--accent); margin-bottom: 15px;">
+                <i class="fas fa-exchange-alt"></i>
+            </div>
+            <h4 style="font-weight: 700; margin-bottom: 10px; color: var(--primary);">Interoperable (FHIR)</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Seamless data exchange between different hospital systems worldwide.</p>
+        </div>
+    </div>
+</section>
+
+    <section class="contact-section" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">Get in Touch</h2>
+                <p style="font-size: 1.2rem; opacity: 0.7; margin-bottom: 40px;">Have questions about our unified ecosystem? Our team is here to help you integrate into the future of healthcare.</p>
+                <div style="display: flex; gap: 20px; font-size: 1.5rem;">
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-facebook"></i>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea placeholder="How can we help?" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 OneHealth Systems. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
